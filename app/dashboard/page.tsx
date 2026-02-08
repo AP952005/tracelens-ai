@@ -11,6 +11,7 @@ import {
 import { InvestigationCase } from '@root/types/investigation';
 import { ScanningOverlay, GlassCard, StatCard } from '../components/visualizations';
 import { CyberIntroAnimation } from '../components/visualizations/CyberIntro';
+import { Footer } from '../components/Footer';
 
 export default function DashboardPage() {
     const router = useRouter();
@@ -320,6 +321,9 @@ export default function DashboardPage() {
                         </motion.div>
                     )}
                 </div>
+
+                {/* Footer with developer credits */}
+                <Footer variant="full" />
             </div>
         </>
     );

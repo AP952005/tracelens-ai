@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Specify the workspace root to avoid lockfile detection issues
+  outputFileTracingRoot: __dirname,
   // Run ESLint separately via `npm run lint` (avoids deprecated next lint)
   eslint: {
     ignoreDuringBuilds: true,

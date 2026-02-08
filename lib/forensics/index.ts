@@ -15,12 +15,28 @@ export * from './hashUtils';
 
 // Advanced Intelligence Modules
 export * from './githubIntel';
-export * from './emailIntel';
 export * from './ipIntel';
-export * from './whoisIntel';
 export * from './socialScanner';
 export * from './virusTotalIntel';
 export * from './shodanIntel';
+
+// Email Intel - explicit exports to avoid conflicts with whoisIntel.getDomainIntel
+export {
+    verifyEmail,
+    checkEmailBreach,
+    type EmailVerification,
+    type DomainIntel as EmailDomainIntel  // Renamed to avoid conflict
+} from './emailIntel';
+
+// WHOIS Intel - explicit exports (has the main getDomainIntel)
+export {
+    getDomainIntel,
+    getWHOIS,
+    getDNSRecords,
+    type DomainIntelResult,
+    type WHOISData,
+    type DNSRecords
+} from './whoisIntel';
 
 // Unified OSINT Service
 export * from './osintService';

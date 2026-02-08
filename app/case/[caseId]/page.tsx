@@ -20,6 +20,7 @@ import { EvidenceLocker } from '../../components/visualizations/EvidenceLocker';
 import { DarkWebMonitor } from '../../components/visualizations/DarkWebMonitor';
 import { DigitalFingerprint } from '../../components/visualizations/DigitalFingerprint';
 import { IntelPanel } from '../../components/visualizations/IntelPanel';
+import { Footer } from '../../components/Footer';
 import { analyzeThreat } from '@root/lib/forensics/riskEngine';
 
 // Platform icon mapping

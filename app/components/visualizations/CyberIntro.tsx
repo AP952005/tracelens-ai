@@ -94,41 +94,56 @@ export function CyberIntroAnimation({ onComplete, duration = 4000 }: CyberIntroP
                 {phase >= 1 && (
                     <>
                         {[
-                            { icon: <AlertTriangle />, x: '15%', y: '20%', color: 'red', delay: 0 },
-                            { icon: <Shield />, x: '80%', y: '25%', color: 'cyan', delay: 0.2 },
-                            { icon: <Lock />, x: '10%', y: '70%', color: 'green', delay: 0.4 },
-                            { icon: <Wifi />, x: '85%', y: '75%', color: 'yellow', delay: 0.6 },
-                            { icon: <Database />, x: '25%', y: '45%', color: 'purple', delay: 0.8 },
-                            { icon: <Globe />, x: '75%', y: '50%', color: 'blue', delay: 1 },
-                            { icon: <Cpu />, x: '50%', y: '15%', color: 'orange', delay: 1.2 },
-                            { icon: <Radio />, x: '45%', y: '80%', color: 'pink', delay: 1.4 },
-                        ].map((item, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ scale: 0, opacity: 0 }}
-                                animate={{
-                                    scale: [0, 1.2, 1],
-                                    opacity: [0, 1, 0.6]
-                                }}
-                                transition={{ delay: item.delay, duration: 0.5 }}
-                                className={`absolute w-10 h-10 flex items-center justify-center`}
-                                style={{ left: item.x, top: item.y }}
-                            >
+                            { Icon: AlertTriangle, x: '15%', y: '20%', color: 'red', delay: 0 },
+                            { Icon: Shield, x: '80%', y: '25%', color: 'cyan', delay: 0.2 },
+                            { Icon: Lock, x: '10%', y: '70%', color: 'green', delay: 0.4 },
+                            { Icon: Wifi, x: '85%', y: '75%', color: 'yellow', delay: 0.6 },
+                            { Icon: Database, x: '25%', y: '45%', color: 'purple', delay: 0.8 },
+                            { Icon: Globe, x: '75%', y: '50%', color: 'blue', delay: 1 },
+                            { Icon: Cpu, x: '50%', y: '15%', color: 'orange', delay: 1.2 },
+                            { Icon: Radio, x: '45%', y: '80%', color: 'pink', delay: 1.4 },
+                        ].map((item, i) => {
+                            const colorMap: Record<string, string> = {
+                                red: '#ef4444',
+                                cyan: '#06b6d4',
+                                green: '#22c55e',
+                                yellow: '#eab308',
+                                purple: '#a855f7',
+                                blue: '#3b82f6',
+                                orange: '#f97316',
+                                pink: '#ec4899'
+                            };
+                            const glowColor = colorMap[item.color] || '#06b6d4';
+
+                            return (
                                 <motion.div
+                                    key={i}
+                                    initial={{ scale: 0, opacity: 0 }}
                                     animate={{
-                                        boxShadow: [
-                                            `0 0 20px ${item.color === 'red' ? '#ef4444' : item.color === 'cyan' ? '#06b6d4' : item.color === 'green' ? '#22c55e' : '#eab308'}`,
-                                            `0 0 40px ${item.color === 'red' ? '#ef4444' : item.color === 'cyan' ? '#06b6d4' : item.color === 'green' ? '#22c55e' : '#eab308'}`,
-                                            `0 0 20px ${item.color === 'red' ? '#ef4444' : item.color === 'cyan' ? '#06b6d4' : item.color === 'green' ? '#22c55e' : '#eab308'}`
-                                        ]
+                                        scale: [0, 1.2, 1],
+                                        opacity: [0, 1, 0.6]
                                     }}
-                                    transition={{ duration: 1.5, repeat: Infinity }}
-                                    className={`w-full h-full rounded-lg bg-${item.color}-500/20 border border-${item.color}-500/50 flex items-center justify-center text-${item.color}-400`}
+                                    transition={{ delay: item.delay, duration: 0.5 }}
+                                    className="absolute w-10 h-10 flex items-center justify-center"
+                                    style={{ left: item.x, top: item.y }}
                                 >
-                                    {React.cloneElement(item.icon as React.ReactElement, { className: 'w-5 h-5' })}
+                                    <motion.div
+                                        animate={{
+                                            boxShadow: [
+                                                `0 0 20px ${glowColor}`,
+                                                `0 0 40px ${glowColor}`,
+                                                `0 0 20px ${glowColor}`
+                                            ]
+                                        }}
+                                        transition={{ duration: 1.5, repeat: Infinity }}
+                                        className="w-full h-full rounded-lg bg-white/10 border border-white/30 flex items-center justify-center"
+                                        style={{ borderColor: `${glowColor}50`, backgroundColor: `${glowColor}20` }}
+                                    >
+                                        <item.Icon className="w-5 h-5" style={{ color: glowColor }} />
+                                    </motion.div>
                                 </motion.div>
-                            </motion.div>
-                        ))}
+                            );
+                        })}
                     </>
                 )}
             </AnimatePresence>
@@ -282,6 +297,74 @@ export function CyberIntroAnimation({ onComplete, duration = 4000 }: CyberIntroP
                         >
                             ...
                         </motion.span>
+                    </motion.div>
+
+                    {/* Developer credit */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 2 }}
+                        className="mt-8 flex flex-col items-center gap-3"
+                    >
+                        <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/10 to-cyan-500/10 border border-purple-500/20 hover:border-cyan-500/40 transition-all"
+                        >
+                            <motion.div
+                                whileHover={{ rotate: 360 }}
+                                transition={{ duration: 0.5 }}
+                                className="w-6 h-6 rounded-full bg-gradient-to-br from-purple-500 to-cyan-500 flex items-center justify-center text-[8px] font-bold text-white"
+                            >
+                                AP
+                            </motion.div>
+                            <span className="text-xs text-gray-400">
+                                Developed by{' '}
+                                <motion.span
+                                    className="text-purple-400 font-medium"
+                                    whileHover={{
+                                        textShadow: '0 0 10px #8b5cf6',
+                                        color: '#c4b5fd'
+                                    }}
+                                >
+                                    Abishek Palani
+                                </motion.span>
+                            </span>
+                            <span className="text-gray-600">|</span>
+                            <motion.span
+                                className="text-xs text-cyan-400 font-bold"
+                                whileHover={{
+                                    textShadow: '0 0 10px #06b6d4'
+                                }}
+                            >
+                                AP Solutions
+                            </motion.span>
+                        </motion.div>
+
+                        {/* Social links */}
+                        <div className="flex items-center gap-3">
+                            {[
+                                { href: 'https://github.com/AP952005', label: 'G', color: 'from-gray-500 to-gray-600' },
+                                { href: 'https://www.linkedin.com/in/ap9505', label: 'in', color: 'from-blue-500 to-cyan-500' },
+                                { href: 'mailto:abishekpalanisivashanmugam@gmail.com', label: '@', color: 'from-purple-500 to-pink-500' }
+                            ].map((social, i) => (
+                                <motion.a
+                                    key={i}
+                                    href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 2.2 + i * 0.1 }}
+                                    whileHover={{
+                                        scale: 1.2,
+                                        boxShadow: '0 0 15px rgba(6,182,212,0.5)'
+                                    }}
+                                    className={`w-6 h-6 rounded-md bg-gradient-to-br ${social.color} flex items-center justify-center text-[9px] font-bold text-white border border-white/20 hover:border-white/50 transition-all`}
+                                >
+                                    {social.label}
+                                </motion.a>
+                            ))}
+                        </div>
                     </motion.div>
                 </div>
             </div>

@@ -1,6 +1,11 @@
 {
-  "name": "tambo-template",
-  "version": "0.1.0",
+  "name": "tracelens-ai",
+  "version": "1.0.0",
+  "description": "AI-powered OSINT and Digital Forensics Investigation Platform",
+  "author": {
+    "name": "Abishek Palani",
+    "company": "AP Solutions"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
