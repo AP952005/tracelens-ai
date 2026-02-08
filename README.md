@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TraceLens AI
 
 **Cyberpunk Forensic Investigation Terminal powered by Tambo AI**
@@ -69,3 +70,6 @@ TraceLens demonstrates the power of **Generative UI** in complex data-heavy appl
 
 ---
 *Built for the Tambo Hackathon 2024.*
+=======
+# tracelens-ai
+>>>>>>> 595e425f2af8f44146f2abd98de76dbe82c33653
