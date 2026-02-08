@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Tailwind CSS Variables customized with tambo colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Tambo Specific Variables needed for tambo components */
+  --color-container: var(--container);
+  --color-backdrop: var(--backdrop);
+  --color-muted-backdrop: var(--muted-backdrop);
+}
+
+:root {
+  /* Cyberpunk Dark Mode Default */
+  --background: #05070d;
+  --foreground: #ffffff;
+  --card: #0a1020;
+  --card-foreground: #ffffff;
+  --popover: #0a1020;
+  --popover-foreground: #ffffff;
+  
+  /* Neon Cyan Primary */
+  --primary: #00f3ff;
+  --primary-foreground: #000000;
+  
+  /* Darker Secondary */
+  --secondary: #111b2d;
+  --secondary-foreground: #00f3ff;
+  
+  /* Muted / Gray */
+  --muted: #1a2236;
+  --muted-foreground: #94a3b8;
+  
+  /* Accent (Pink/Red for threats) */
+  --accent: #ff0055;
+  --accent-foreground: #ffffff;
+  
+  /* Destructive */
+  --destructive: #ff0000;
+  --destructive-foreground: #ffffff;
+  
+  /* Border & Input */
+  --border: rgba(0, 243, 255, 0.2);
+  --input: rgba(0, 243, 255, 0.2);
+  --ring: #00f3ff;
+  
+  /* Charts */
+  --chart-1: #00f3ff;
+  --chart-2: #ff0055;
+  --chart-3: #22d3ee;
+  --chart-4: #a855f7;
+  --chart-5: #eab308;
+
+  /* Tambo Specific Variables */
+  --container: #0a1020;
+  --backdrop: rgba(5, 7, 13, 0.8);
+  --muted-backdrop: rgba(5, 7, 13, 0.5);
+  --radius: 0.2rem; /* Cyberpunk sharp edges */
+  --panel-left-width: 500px;
+  --panel-right-width: 500px;
+  --sidebar-width: 3rem;
+}
+
+.dark {
+  /* Same as root since we default to dark mode for cyberpunk */
+  --background: #05070d;
+  --foreground: #ffffff;
+  --card: #0a1020;
+  --card-foreground: #ffffff;
+  --popover: #0a1020;
+  --popover-foreground: #ffffff;
+  --primary: #00f3ff;
+  --primary-foreground: #000000;
+  --secondary: #111b2d;
+  --secondary-foreground: #00f3ff;
+  --muted: #1a2236;
+  --muted-foreground: #94a3b8;
+  --accent: #ff0055;
+  --accent-foreground: #ffffff;
+  --destructive: #ff0000;
+  --border: rgba(0, 243, 255, 0.2);
+  --input: rgba(0, 243, 255, 0.2);
+  --ring: #00f3ff;
+  --chart-1: #00f3ff;
+  --chart-2: #ff0055;
+  --chart-3: #22d3ee;
+  --chart-4: #a855f7;
+  --chart-5: #eab308;
+  --container: #0a1020;
+  --backdrop: rgba(5, 7, 13, 0.8);
+  --muted-backdrop: rgba(5, 7, 13, 0.5);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+
+/* Animations from template */
+@keyframes flash {
+  0%, 100% { background-color: transparent; }
+  50% { background-color: rgb(0 243 255 / 0.3); }
+}
+
+.animate-flash {
+  animation: flash 1s ease-in-out;
+}
+
+@keyframes thinking-gradient {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-thinking-gradient {
+  background: linear-gradient(90deg, #00f3ff 0%, #ffffff 50%, #00f3ff 100%);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: thinking-gradient 2s linear infinite;
+}
